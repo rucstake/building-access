@@ -1,4 +1,4 @@
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFkhiIYgxUqWKyyAwSKcW864MLgczgh_DhDYTtDQKU91tFxVwWSBmPLUDz-B2kWD2O/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwD0RnqOCoMzjzOHK1cFtq93JyMrsrnS5Pe-HDOnVJr10ogi2I-vpx7wFCKsFk6P30Agw/exec';
 
 // Build ward-to-building map from config
 var wardBuildingMap = {};
