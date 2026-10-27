@@ -47,8 +47,7 @@ document.querySelectorAll('textarea').forEach(function(ta) {
   ta.addEventListener('input', function() { autoGrow(this); });
 });
 
-// The scheduler-approval dropdown only exists on index2.html. Hide whichever
-// of these the page has.
+// Hide whichever of the scheduler-approval fields the page has.
 function hideApprovalFields() {
   ['schedulerReminder', 'approvalRow', 'approvalWarning'].forEach(function(id) {
     var el = document.getElementById(id);
@@ -122,7 +121,7 @@ function confirmCancel() {
 function toggleMode() {
   document.body.classList.toggle('light');
   var btn = document.getElementById('modeToggle');
-  // index2.html uses one icon (◐) for both modes, so leave it alone
+  // A data-fixed-icon button uses one icon (◐) for both modes, so leave it alone
   if (btn.hasAttribute('data-fixed-icon')) return;
   btn.innerHTML = document.body.classList.contains('light') ? '&#9789;' : '&#9728;';
 }

@@ -8,6 +8,7 @@ async function fillValidForm(page) {
   await page.selectOption('#ward', '8th Ward');
   await page.selectOption('#building', 'Stake Center');
   await page.selectOption('#request', 'building_access');
+  await page.selectOption('#approved', 'yes');
   await page.fill('#name', 'John Test');
   await page.fill('#email', 'test@example.com');
   await page.fill('#accessInfo', 'Tomorrow 8am - 10pm\nFamily Party');
@@ -122,6 +123,7 @@ test.describe('Submission', () => {
     expect(data.name).toBe('John Test');
     expect(data.email).toBe('test@example.com');
     expect(data.accessInfo).toBe('Tomorrow 8am - 10pm\nFamily Party');
+    expect(data.approved).toBe('yes');
     expect(data.acknowledge).toBe(false);
   });
 
