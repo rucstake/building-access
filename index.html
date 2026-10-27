@@ -8,8 +8,10 @@
 </head>
 <body class="light">
   <div class="header">
-    <h2><span id="stakeName"></span><br><span class="header-subtitle">Temporary Building Access</span></h2>
-    <button type="button" id="modeToggle" onclick="toggleMode()" aria-label="Toggle light and dark mode">&#9789;</button>
+    <div class="header-brand">
+      <h2><span id="stakeName"></span><br><span class="header-subtitle">Temporary Building Access</span></h2>
+    </div>
+    <button type="button" id="modeToggle" onclick="toggleMode()" aria-label="Toggle light and dark mode" data-fixed-icon>&#9680;</button>
   </div>
   <form id="licenseForm">
     <label for="ward">Ward</label>
@@ -28,7 +30,16 @@
       <option value="building_access">Building Access</option>
       <option value="building_lockup">Schedule Building Lockup</option>
     </select>
-    <p id="schedulerReminder" class="field-hint field-reminder hidden">Requires building scheduler approval.</p>
+    <p id="schedulerReminder" class="field-hint field-reminder hidden">Approval from the building scheduler is required first.</p>
+    <div id="approvalRow" class="hidden">
+      <label for="approved">Did you get approval from the building scheduler?</label>
+      <select id="approved" name="approved">
+        <option value="">-- Select --</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <p id="approvalWarning" class="field-hint field-reminder hidden">Your building access will still work, but if someone has the gym or another room reserved with the building scheduler, they have priority and may ask you to leave.</p>
+    </div>
 
     <p id="usageNote" class="access-note">Select your Ward, a Building and choose your Request.</p>
 
@@ -47,8 +58,8 @@
       <p class="field-hint">Provide date, time, and purpose for building request.</p>
       <textarea id="accessInfo" name="accessInfo" rows="5"></textarea>
 
-      <!-- Hidden until the Apps Script side is deployed with
-           ENABLE_CONFIRMATION_EMAIL = true. To turn on: drop "hidden" below.
+      <!-- Deliberately hidden: with ENABLE_CONFIRMATION_EMAIL = true in
+           code.gs every requester gets a confirmation, so there's no opt-in.
            Kept in the DOM rather than commented out because app.js reads
            #acknowledge in four places and would throw on null. While hidden it
            stays unchecked, so submissions send acknowledge: false. -->
